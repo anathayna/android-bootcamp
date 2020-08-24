@@ -10,13 +10,23 @@ fun main(args:Array<String>) {
     var pi: Double = 3.14
     var radius: Int = 5
     var c = pi.toInt() * radius * 2
+    var candy: List<String> = listOf("cookie", "snickers", "chocolate")
+    var snack: Array<String> = arrayOf("sandwiche", "cheese", "pretzel")
+    var lunch: MutableList<String> = mutableListOf("salad", "beef", "egg")
+    var movies: MutableList<String> = mutableListOf("totoro", "chihiro", "kiki")
 
-    wallet -= 20
+    wallet -= 2
+    lunch.add(3, "juice")
+    movies.add(3, "high school musical")
 
     println(age)
     println(food)
     println(wallet)
     println(c)
+    println(candy[1])
+    println(snack[0])
+    println(lunch[3])
+    println(movies[3])
 
     if(isLightOn) {
         println("walk across the room")
@@ -36,5 +46,7 @@ fun main(args:Array<String>) {
     } else {
         println("try out the kiddie pool")
     }
+
+
 
 }
