@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Blackboard</string>
+    <string name="msg_pronome">escolha um pronome:</string>
 </resources>
