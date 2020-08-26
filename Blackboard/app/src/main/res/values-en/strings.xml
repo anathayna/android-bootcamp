@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blackboard</string>
+    <string name="msg_pronome">choice a pronoun:</string>
+    <string name="ela">She</string>
+    <string name="ele">He</string>
+    <string name="outro">Other</string>
+    <string name="fim">End</string>
+    <string name="nome">Name</string>
+</resources>
