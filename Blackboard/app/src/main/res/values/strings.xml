@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Blackboard</string>
     <string name="msg_pronome">escolha um pronome:</string>
+    <string name="ela">Ela</string>
+    <string name="ele">Ele</string>
+    <string name="outro">Outro</string>
+    <string name="fim">fim</string>
+    <string name="nome">Nome</string>
 </resources>

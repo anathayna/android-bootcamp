@@ -21,15 +21,15 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20">
+            android:layout_marginBottom="32">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/etNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="16"
-                android:inputType="textPersonName"
-                android:text="Name" />
+                android:hint="@string/nome"
+                android:inputType="textPersonName" />
         </TableRow>
 
         <TableRow
@@ -49,26 +49,27 @@
             android:layout_marginBottom="32">
 
             <RadioGroup
+                android:id="@+id/rgPronome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/rbEla"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ela" />
+                    android:text="@string/ela" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/rbEle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ele" />
+                    android:text="@string/ele" />
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/rbOutro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Outro" />
+                    android:text="@string/outro" />
             </RadioGroup>
         </TableRow>
 
@@ -77,10 +78,10 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnFim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="fim" />
+                android:text="@string/fim" />
         </TableRow>
 
     </TableLayout>
