@@ -16,7 +16,7 @@ class HelloActivity : AppCompatActivity() {
                 R.id.rbEle -> pronome = "Ele"
                 R.id.rbOutro -> pronome = "Neutro"
             }
-            alert("Bem vinde!", "${etNome.text}, você escolheu o pronome $pronome", this)
+            alert("Bem vinde!", "${etEmail.text}, você escolheu o pronome $pronome", this)
         }
     }
 }
