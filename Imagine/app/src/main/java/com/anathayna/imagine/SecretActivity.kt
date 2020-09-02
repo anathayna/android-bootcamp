@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class SecretActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         btnGoToDetail.setOnClickListener {
-            val i = Intent(this, DetailActivity::class.java)
-            startActivity(i)
+            val i = Intent("android.intent.action.ACTION_DETAIL")
         }
+
     }
 }
