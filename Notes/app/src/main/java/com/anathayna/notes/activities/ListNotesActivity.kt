@@ -3,6 +3,8 @@ package com.anathayna.notes.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.anathayna.notes.R
 import com.anathayna.notes.model.Notes
 import kotlinx.android.synthetic.main.activity_list_notes.*
@@ -37,5 +39,19 @@ class ListNotesActivity : AppCompatActivity() {
 
             idNoteContainer.addView(card)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.idUser) {
+            val i = Intent(this, UserActivity::class.java)
+            startActivity(i)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
