@@ -7,6 +7,8 @@ import android.widget.Toast
 import com.anathayna.retropet.R
 import com.anathayna.retropet.api.ProdutoAPI
 import com.anathayna.retropet.model.Product
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.card.*
 import kotlinx.android.synthetic.main.card.view.*
 import kotlinx.android.synthetic.main.list_products.*
 import okhttp3.OkHttpClient
@@ -34,6 +36,7 @@ class ListProductsActivity : AppCompatActivity() {
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://oficinacordova.azurewebsites.net/")
+            .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -70,6 +73,10 @@ class ListProductsActivity : AppCompatActivity() {
 
                 card.txtNome.text = product.nomeProduto
                 card.txtPreco.text = formatter.format(product.precProduto)
+
+                Picasso.get()
+                    .load("https://oficinacordova.azurewebsites.net/android/rest/produto/image/" + product.idProduto)
+                    .into(imageView)
 
                 idContainer.addView(card)
             }
