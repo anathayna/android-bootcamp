@@ -76,6 +76,7 @@ class ListProductsActivity : AppCompatActivity() {
 
                 Picasso.get()
                     .load("https://oficinacordova.azurewebsites.net/android/rest/produto/image/" + product.idProduto)
+                    .error(R.drawable.ic_image)
                     .into(imageView)
 
                 idContainer.addView(card)
