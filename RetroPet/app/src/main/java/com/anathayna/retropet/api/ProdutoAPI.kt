@@ -7,7 +7,5 @@ import retrofit2.Call
 interface ProdutoAPI {
 
     @GET("/android/rest/produto/")
-    fun list(): Call<List<Product>> {
-
-    }
+    fun list(): Call<List<Product>>
 }
