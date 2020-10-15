@@ -9,9 +9,11 @@ import com.anathayna.retropet.api.ProdutoAPI
 import com.anathayna.retropet.model.Product
 import kotlinx.android.synthetic.main.card.view.*
 import kotlinx.android.synthetic.main.list_products.*
+import okhttp3.OkHttpClient
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import java.text.NumberFormat
+import java.util.concurrent.TimeUnit
 
 class ListProductsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,11 @@ class ListProductsActivity : AppCompatActivity() {
     }
 
     fun fetchProducts() {
+        val httpClient = OkHttpClient.Builder()
+            .readTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .build()
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://oficinacordova.azurewebsites.net/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -60,6 +67,7 @@ class ListProductsActivity : AppCompatActivity() {
         products?.let {
             for(product in products) {
                 val card = layoutInflater.inflate(R.layout.card, idContainer, false)
+
                 card.txtNome.text = product.nomeProduto
                 card.txtPreco.text = formatter.format(product.precProduto)
 
