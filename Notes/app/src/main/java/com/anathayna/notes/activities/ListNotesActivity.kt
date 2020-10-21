@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.preference.PreferenceManager
 import com.anathayna.notes.R
 import com.anathayna.notes.model.Notes
 import com.google.android.material.snackbar.Snackbar
@@ -40,6 +41,9 @@ class ListNotesActivity : AppCompatActivity() {
     fun refreshNotes() {
         idNoteContainer.removeAllViews()
 
+        val prefs : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val color: Int = prefs.getInt("noteColor", R.color.noteDefaultColor)
+
         for(note in Notes.noteList) {
             val card =
                 layoutInflater.inflate(R.layout.note_card, idNoteContainer, false)
@@ -47,6 +51,8 @@ class ListNotesActivity : AppCompatActivity() {
             card.txtTitle.text = note.title
             card.txtDescription.text = note.desc
             card.txtUser.text = note.user
+
+            card.setBackgroundColor(color)
 
             idNoteContainer.addView(card)
         }
