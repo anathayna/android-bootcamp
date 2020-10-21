@@ -9,6 +9,13 @@
             android:defaultValue="false"
             android:key="allow_spam"
             android:title="allow spam" />
+
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:key="noteColor"
+            android:title="note color"
+            android:summary="pick a color"
+            android:defaultValue="@color/noteDefaultColor">
+        </com.jaredrummler.android.colorpicker.ColorPreferenceCompat>
     </PreferenceCategory>
 
 </PreferenceScreen>
