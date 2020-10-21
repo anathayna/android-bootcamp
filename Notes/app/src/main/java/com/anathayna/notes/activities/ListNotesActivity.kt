@@ -63,6 +63,13 @@ class ListNotesActivity : AppCompatActivity() {
             startActivity(i)
             return true
         }
+
+        if (item.itemId == R.id.idConfig) {
+            val i = Intent(this, SettingsActivity::class.java)
+            startActivity(i)
+            return true
+        }
+
         return super.onOptionsItemSelected(item)
     }
 }

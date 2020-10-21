@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:text="geral"
+        android:textColor="@color/colorPrimaryDark"
+        app:title="geral">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="allow_spam"
+            android:title="allow spam" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
