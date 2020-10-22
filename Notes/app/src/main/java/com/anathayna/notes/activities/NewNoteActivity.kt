@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.room.Room
 import com.anathayna.notes.R
+import com.anathayna.notes.db.AppDatabase
 import com.anathayna.notes.model.Note
 import com.anathayna.notes.model.Notes
 import kotlinx.android.synthetic.main.activity_new_note.*
@@ -22,10 +24,20 @@ class NewNoteActivity : AppCompatActivity() {
             val username : String? = sharedPref.getString("username", "")
 
             username?.let {
-                val note = Note(etTitle.text.toString(), etDescription.text.toString(), it)
-                Notes.noteList.add(note)
-                finish()
+                val note = Note(title = etTitle.text.toString(), desc = etDescription.text.toString(), user = it)
+
+                Thread {
+                    saveNote(note)
+                    finish()
+                }.start()
             }
         }
+    }
+
+    fun saveNote(note : Note) {
+        val db : AppDatabase =
+            Room.databaseBuilder(this, AppDatabase::class.java, "AppDb").build()
+
+        db.noteDao().save(note)
     }
 }
