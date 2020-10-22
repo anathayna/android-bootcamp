@@ -1,7 +1,5 @@
 package com.anathayna.notes.db
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.anathayna.notes.model.Note
 
 @Dao
@@ -11,4 +9,10 @@ interface NoteDao {
 
     @Query(value = "select * from Note")
     fun getAll(): List<Note>
+
+    @Delete
+    fun delete(note: Note)
+
+    @Update
+    fun update(note: Note)
 }

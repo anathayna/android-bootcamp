@@ -17,6 +17,8 @@ import com.anathayna.notes.model.Note
 import com.anathayna.notes.model.Notes
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_list_notes.*
+import kotlinx.android.synthetic.main.activity_new_note.*
+import kotlinx.android.synthetic.main.note_card.*
 import kotlinx.android.synthetic.main.note_card.view.*
 
 class ListNotesActivity : AppCompatActivity() {
