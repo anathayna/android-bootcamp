@@ -34,31 +34,18 @@ class UpdateNoteActivity : AppCompatActivity() {
 
         btnDel.setOnClickListener {
 
-            val sharedPref : SharedPreferences =
-                getSharedPreferences("Users", Context.MODE_PRIVATE)
-
-            val username : String? = sharedPref.getString("username", "")
-
-            username?.let {
-                val note = Note(
-                    title = etUpdateTitle.text.toString(),
-                    desc = etUpdateDesc.text.toString(),
-                    user = it
-                )
-
-                Thread {
-                    deleteNote(note)
-                    finish()
-                }.start()
-                Toast.makeText(this,"nota excluida", Toast.LENGTH_SHORT).show()
-            }
+            Thread {
+                deleteNote(id)
+                finish()
+            }.start()
+            Toast.makeText(this,"nota excluida", Toast.LENGTH_SHORT).show()
+            finish()
         }
     }
 
-    fun deleteNote(note: Note) {
-        val db : AppDatabase =
-            Room.databaseBuilder(this, AppDatabase::class.java, "AppDb").build()
-
-        db.noteDao().delete(note)
+    fun deleteNote(id: Int){
+        val db =
+            Room.databaseBuilder(this, AppDatabase::class.java,"AppDb").build()
+        db.noteDao().delete(id)
     }
 }
