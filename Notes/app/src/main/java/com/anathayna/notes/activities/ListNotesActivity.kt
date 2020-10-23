@@ -18,6 +18,7 @@ import com.anathayna.notes.model.Notes
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_list_notes.*
 import kotlinx.android.synthetic.main.activity_new_note.*
+import kotlinx.android.synthetic.main.activity_update_note.*
 import kotlinx.android.synthetic.main.note_card.*
 import kotlinx.android.synthetic.main.note_card.view.*
 
@@ -46,7 +47,8 @@ class ListNotesActivity : AppCompatActivity() {
 
     fun refreshNotes() {
         Thread {
-            val db : AppDatabase = Room.databaseBuilder(this, AppDatabase::class.java, "AppDb").build()
+            val db : AppDatabase =
+                Room.databaseBuilder(this, AppDatabase::class.java, "AppDb").build()
 
             val allNotes = db.noteDao().getAll()
 
@@ -72,6 +74,15 @@ class ListNotesActivity : AppCompatActivity() {
             card.txtUser.text = note.user
 
             card.setBackgroundColor(color)
+
+            card.setOnClickListener{
+                val i = Intent(this, UpdateNoteActivity::class.java)
+                i.putExtra("title", note.title.toString())
+                i.putExtra("desc", note.desc.toString())
+                i.putExtra("id", note.id)
+
+                startActivity(i)
+            }
 
             idNoteContainer.addView(card)
         }
