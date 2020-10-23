@@ -29,17 +29,23 @@ class UpdateNoteActivity : AppCompatActivity() {
         val db = Room.databaseBuilder(this, AppDatabase::class.java, "AppDb").build()
 
         btnUpdate.setOnClickListener{
-
+            Thread {
+                updateNote(
+                    etUpdateTitle.text.toString(),
+                    etUpdateDesc.text.toString(),
+                    id
+                )
+                finish()
+            }.start()
+            finish()
         }
 
         btnDel.setOnClickListener {
-
             Thread {
                 deleteNote(id)
                 finish()
             }.start()
             Toast.makeText(this,"nota excluida", Toast.LENGTH_SHORT).show()
-            finish()
         }
     }
 
@@ -47,5 +53,11 @@ class UpdateNoteActivity : AppCompatActivity() {
         val db =
             Room.databaseBuilder(this, AppDatabase::class.java,"AppDb").build()
         db.noteDao().delete(id)
+    }
+
+    fun updateNote(title: String, desc: String, id: Int){
+        val db =
+            Room.databaseBuilder(this, AppDatabase::class.java,"AppDb").build()
+        db.noteDao().updateData(title, desc, id)
     }
 }
