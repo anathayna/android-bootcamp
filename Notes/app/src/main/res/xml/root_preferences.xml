@@ -21,6 +21,12 @@
             android:summary="pick a color"
             android:defaultValue="@color/noteDefaultColor"/>
 
+        <com.jaredrummler.android.colorpicker.ColorPreferenceCompat
+            android:defaultValue="@color/textDefaultColor"
+            android:key="textColor"
+            android:summary="pick a color"
+            android:title="text color"/>
+
         <ListPreference
             android:defaultValue="20"
             android:entries="@array/title_size"
