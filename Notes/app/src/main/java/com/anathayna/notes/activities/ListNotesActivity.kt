@@ -66,13 +66,27 @@ class ListNotesActivity : AppCompatActivity() {
         val prefs : SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val color: Int = prefs.getInt("noteColor", R.color.noteDefaultColor)
 
+        val titleSize = prefs.getString("list_title_size", "20f")
+        val descSize = prefs.getString("list_desc_size", "12f")
+
         for(note in noteList) {
             val card =
                 layoutInflater.inflate(R.layout.note_card, idNoteContainer, false)
 
             card.txtTitle.text = note.title
+            titleSize?.let {
+                card.txtTitle.textSize = it.toFloat()
+            }
+
             card.txtDescription.text = note.desc
+            descSize?.let {
+                card.txtDescription.textSize = it.toFloat()
+            }
+
             card.txtUser.text = note.user
+            descSize?.let {
+                card.txtUser.textSize = it.toFloat()
+            }
 
             card.setBackgroundColor(color)
 
