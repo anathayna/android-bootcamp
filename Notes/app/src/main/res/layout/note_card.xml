@@ -66,6 +66,15 @@
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 android:drawableTop="@drawable/ic_baseline_delete_forever_24" />
+
+            <Button
+                android:id="@+id/btnCor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:drawableTop="@drawable/ic_paint" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

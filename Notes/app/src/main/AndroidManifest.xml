@@ -16,7 +16,7 @@
         <activity android:name=".activities.UserActivity" />
         <activity
             android:name=".activities.NewNoteActivity"
-            android:label="Criar Nota" />
+            android:label="criar nota"/>
         <activity android:name=".activities.ListNotesActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
