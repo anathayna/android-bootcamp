@@ -13,6 +13,6 @@ interface NoteDao {
     @Query("delete from Note where id = :id")
     fun delete(id: Int)
 
-    @Query("update Note set title = :title, 'desc' =:desc where id = :id")
-    fun updateData(title: String, desc: String, id: Int)
+    @Query("update Note set title = :title, 'desc' =:desc, color = :color where id = :id")
+    fun updateData(title: String, desc: String, color: Int?, id: Int)
 }

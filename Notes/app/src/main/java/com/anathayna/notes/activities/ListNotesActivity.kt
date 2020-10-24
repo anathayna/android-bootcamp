@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_new_note.*
 import kotlinx.android.synthetic.main.activity_update_note.*
 import kotlinx.android.synthetic.main.note_card.*
 import kotlinx.android.synthetic.main.note_card.view.*
+import petrov.kristiyan.colorpicker.ColorPicker
 
 class ListNotesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,10 +76,15 @@ class ListNotesActivity : AppCompatActivity() {
 
             card.setBackgroundColor(color)
 
+            note.color?.let{
+                card.setBackgroundColor(it)
+            }
+
             card.setOnClickListener{
                 val i = Intent(this, UpdateNoteActivity::class.java)
                 i.putExtra("title", note.title.toString())
                 i.putExtra("desc", note.desc.toString())
+                i.putExtra("color", note.color)
                 i.putExtra("id", note.id)
 
                 startActivity(i)
