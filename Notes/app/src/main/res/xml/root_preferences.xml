@@ -20,21 +20,18 @@
             android:title="note color"
             android:summary="pick a color"
             android:defaultValue="@color/noteDefaultColor"/>
-        <EditTextPreference
-            android:defaultValue="20f"
-            android:key="title"
+
+        <ListPreference
+            android:defaultValue="20"
             android:entries="@array/title_size"
             android:entryValues="@array/title_size"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
+            android:key="list_title_size"
             android:title="title preference" />
-        <EditTextPreference
-            android:defaultValue="12f"
+        <ListPreference
+            android:defaultValue="12"
             android:entries="@array/desc_size"
             android:entryValues="@array/desc_size"
-            android:key="desc"
-            android:selectAllOnFocus="true"
-            android:singleLine="true"
+            android:key="list_desc_size"
             android:title="description preference" />
 
     </PreferenceCategory>
