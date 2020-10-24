@@ -9,4 +9,21 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+    <string-array name="title_size">
+        <item>10f</item>
+        <item>12f</item>
+        <item>14f</item>
+        <item>18f</item>
+        <item>24f</item>
+        <item>30f</item>
+        <item>36f</item>
+    </string-array>
+    <string-array name="desc_size">
+        <item>8f</item>
+        <item>10f</item>
+        <item>12f</item>
+        <item>14f</item>
+        <item>18f</item>
+    </string-array>
 </resources>
