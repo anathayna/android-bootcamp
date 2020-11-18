@@ -34,6 +34,7 @@ class ListProductsActivity : AppCompatActivity() {
             .connectTimeout(30, TimeUnit.SECONDS)
             .build()
 
+        //http://oficinacordova.azurewebsites.net/android/rest/produto
         val retrofit = Retrofit.Builder()
             .baseUrl("https://oficinacordova.azurewebsites.net/")
             .client(httpClient)
@@ -64,11 +65,11 @@ class ListProductsActivity : AppCompatActivity() {
     }
 
     fun viewUpdate(products: List<Product>) {
-        val formatter = NumberFormat.getCurrencyInstance()
         idContainer.removeAllViews()
+        val formatter = NumberFormat.getCurrencyInstance()
 
         products?.let {
-            for(product in products) {
+            for(product in it) {
                 val card = layoutInflater.inflate(R.layout.card, idContainer, false)
 
                 card.txtNome.text = product.nomeProduto
@@ -77,7 +78,7 @@ class ListProductsActivity : AppCompatActivity() {
                 Picasso.get()
                     .load("https://oficinacordova.azurewebsites.net/android/rest/produto/image/" + product.idProduto)
                     .error(R.drawable.ic_image)
-                    .into(imageView)
+                    .into(idImageProduct)
 
                 idContainer.addView(card)
             }
