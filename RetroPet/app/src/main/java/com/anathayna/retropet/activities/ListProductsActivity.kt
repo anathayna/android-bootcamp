@@ -3,6 +3,7 @@ package com.anathayna.retropet.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.anathayna.retropet.R
 import com.anathayna.retropet.api.ProdutoAPI
@@ -62,6 +63,10 @@ class ListProductsActivity : AppCompatActivity() {
         }
 
         call.enqueue(callback)
+
+        scrollView.visibility = View.GONE
+        shimmer.visibility = View.VISIBLE
+        shimmer.startShimmer()
     }
 
     fun viewUpdate(products: List<Product>) {
