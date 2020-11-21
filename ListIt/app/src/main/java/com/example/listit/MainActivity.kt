@@ -14,7 +14,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (getCurrentUser() == null) {
-            val providers = arrayListOf(AuthUI.IdpConfig.EmailBuilder().build())
+            val providers = arrayListOf(
+                    AuthUI.IdpConfig.EmailBuilder().build(),
+                    AuthUI.IdpConfig.GoogleBuilder().build())
 
             startActivityForResult(
                 AuthUI.getInstance()
