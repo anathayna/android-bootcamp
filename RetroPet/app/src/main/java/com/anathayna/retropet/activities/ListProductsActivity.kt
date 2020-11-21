@@ -8,6 +8,8 @@ import android.widget.Toast
 import com.anathayna.retropet.R
 import com.anathayna.retropet.api.ProdutoAPI
 import com.anathayna.retropet.model.Product
+import com.facebook.shimmer.Shimmer
+import com.facebook.shimmer.ShimmerDrawable
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card.*
 import kotlinx.android.synthetic.main.card.view.*
@@ -48,6 +50,10 @@ class ListProductsActivity : AppCompatActivity() {
         val callback = object: Callback<List<Product>> {
 
             override fun onResponse(call: Call<List<Product>>, response: Response<List<Product>>) {
+                shimmer.stopShimmer()
+                shimmer.visibility = View.GONE
+                scrollView.visibility = View.VISIBLE
+
                 if(response.isSuccessful) {
                     response.body()?.let { viewUpdate(it) }
                 } else {
@@ -57,6 +63,14 @@ class ListProductsActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<List<Product>>, t: Throwable) {
+                shimmer.stopShimmer()
+                shimmer.visibility = View.GONE
+                scrollView.visibility = View.VISIBLE
+
+                scrollView.visibility = View.GONE
+                shimmer.visibility = View.VISIBLE
+                shimmer.startShimmer()
+
                 Toast.makeText(this@ListProductsActivity, "erro de conexão", Toast.LENGTH_LONG).show()
                 Log.e("[ListProductsActivity]", "[fetchProducts]", t)
             }
@@ -74,6 +88,18 @@ class ListProductsActivity : AppCompatActivity() {
         val formatter = NumberFormat.getCurrencyInstance()
 
         products?.let {
+
+            val shimmer = Shimmer.AlphaHighlightBuilder()
+                .setDuration(800)
+                .setBaseAlpha(0.9f)
+                .setHighlightAlpha(0.7f)
+                .setDirection(Shimmer.Direction.LEFT_TO_RIGHT)
+                .setAutoStart(true)
+                .build()
+
+            val drawShimmer = ShimmerDrawable()
+            drawShimmer.setShimmer(shimmer)
+
             for(product in it) {
                 val card = layoutInflater.inflate(R.layout.card, idContainer, false)
 
@@ -83,6 +109,7 @@ class ListProductsActivity : AppCompatActivity() {
                 Picasso.get()
                     .load("https://oficinacordova.azurewebsites.net/android/rest/produto/image/" + product.idProduto)
                     .error(R.drawable.ic_image)
+                    .placeholder(drawShimmer)
                     .into(idImageProduct)
 
                 idContainer.addView(card)
